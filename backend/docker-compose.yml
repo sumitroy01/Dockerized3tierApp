@@ -1,0 +1,16 @@
+version: "3.9"
+
+services:
+  backend:
+    image: donatebackimg
+    container_name: donate-backend
+    ports:
+      - "5000:5000"
+    env_file:
+      - backend.env
+    networks:
+      - donate-net-v1
+
+networks:
+  donate-net-v1:
+    external: true

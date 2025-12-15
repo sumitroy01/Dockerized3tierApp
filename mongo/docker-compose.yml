@@ -1,0 +1,19 @@
+version: "3.9"
+
+services:
+  mongo:
+    image: mongo
+    container_name: donate-mongo
+    ports:
+      - "27042:27017"
+    volumes:
+      - donate-mongo-data:/data/db
+    networks:
+      - donate-net-v1
+
+volumes:
+  donate-mongo-data:
+
+networks:
+  donate-net-v1:
+    external: true

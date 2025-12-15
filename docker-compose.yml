@@ -1,0 +1,43 @@
+version: "1.0"
+
+services:
+  mongo:
+    image: mongo
+    container_name: donate-mongo
+    ports:
+      - "27042:27017"
+    volumes:
+      - donate-mongo-data:/data/db
+    networks:
+      - donate-net-v1
+
+  backend:
+    image: donatebackimg
+    container_name: donate-backend
+    ports:
+      - "5000:5000"
+    env_file:
+      - ./backend/backend.env
+    depends_on:
+      - mongo
+    networks:
+      - donate-net-v1
+
+  frontend:
+    image: donatefront
+    container_name: donate-frontend
+    ports:
+      - "5151:80"
+    environment:
+      BACKEND_URL: http://localhost:5000
+    depends_on:
+      - backend
+    networks:
+      - donate-net-v1
+
+volumes:
+  donate-mongo-data:
+
+networks:
+  donate-net-v1:
+    name: donate-net-v1

@@ -1,0 +1,16 @@
+version: "3.9"
+
+services:
+  frontend:
+    image: donatefront
+    container_name: donate-frontend
+    ports:
+      - "5151:80"
+    environment:
+      VITE_BACKEND_URI: http:/localhost:5000
+    networks:
+      - donate-net-v1
+
+networks:
+  donate-net-v1:
+    external: true
