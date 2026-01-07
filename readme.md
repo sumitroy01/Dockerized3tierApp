@@ -12,14 +12,16 @@ This project demonstrates real-world DevOps practices such as **service isolatio
 
 ---
 
-## 🧱 Architecture
- Browser
-    ↓
-Frontend (Nginx, React)
-    ↓
-Backend (Node.js, Express)
-    ↓
-MongoDB
+🧱 Architecture
+
+Browser
+  ↓
+Frontend (React + Nginx)
+  ↓
+Backend (Node.js + Express)
+  ↓
+MongoDB (Docker Volume)
+
 
 
 ---
